@@ -1,0 +1,17 @@
+<body>
+	<div class="hero-unit">
+		<div class="row">
+	  	<aside class="span4">
+	    	<section>
+					<% provide(:title, @user.name) %>
+					<h1>
+						<%= gravatar_for @user %>
+						
+						<%= @user.name %>
+					</h1>
+					<%= @user.email %>
+				</section>
+			</aside>
+		</div>
+	</div>
+</body>
