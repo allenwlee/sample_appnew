@@ -5,22 +5,33 @@
     <title><%= full_title(yield(:title)) %></title>
   </head>
   <body>
-    <div class="hero-unit">
+    <% if signed_in? %>
       <div class="row">
-         <div class="span5">
-          <h1>Home</h1>
-         </div>
-          <div class="span5">
-             <p>
-              This is the home page for the
-              <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-              sample application.
-            </p>
-            <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-            
-        </div>
+        <aside class="span4">
+          <section>
+            <%= render 'shared/user_info' %>
+          </section>
+          <section>
+            <%= render 'shared/micropost_form' %>
+          </section>
+        </aside>
+      </div>  
+    <% else %>
+      <div class="center hero-unit">
+        <h1>Welcome to the Sample App</h1>
+
+        <h2>
+          This is the home page for the
+          <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+          sample application.
+        </h2>
+
+        <%= link_to "Sign up now!", signup_path, 
+                                    class: "btn btn-large btn-primary" %>
       </div>
-    </div>  
+
+      <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+  <% end %> 
   </body>
 </html>
 
